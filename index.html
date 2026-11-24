@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Laporan Wakil Mesyuarat · JKN Kedah</title>
+<meta name="theme-color" content="#12355b">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--navy:#12355b;--teal:#0f766e;--bg:#eef2f6;--card:#fff;--line:#d9e1ea;--mut:#64748b;--txt:#0f172a}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--txt);font-size:16px;padding-bottom:84px}
+.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top))}
+.top img{height:36px}
+.top b{display:block;font-size:17px}.top small{opacity:.8;font-size:12px}
+main{max-width:860px;margin:0 auto;padding:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+h3{font-size:16px;margin:0 0 8px}
+label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px;font-weight:600}
+input,select,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:inherit}
+textarea{resize:vertical;min-height:44px;line-height:1.4;overflow:hidden}
+input:focus,textarea:focus,select:focus{outline:2px solid #99c7c2;border-color:var(--teal)}
+a{color:var(--teal)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:10px;padding:10px 14px;font:inherit;font-weight:600;background:var(--teal);color:#fff;cursor:pointer;text-decoration:none}
+.btn.sec{background:#e2e8f0;color:var(--txt)}.btn.out{background:#fff;border:1px solid var(--line);color:var(--txt)}
+.btn.red{background:#fee2e2;color:#b91c1c}.btn.navy{background:var(--navy)}
+.btn.sm{padding:6px 10px;font-size:14px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:6}
+.bnav button{flex:1;border:0;background:none;padding:8px 2px 10px;font:inherit;font-size:12px;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
+.bnav button span{font-size:20px}.bnav button.on{color:var(--teal);font-weight:700}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 12px}
+.tabs button{flex:1;white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-size:14px;font-weight:600;color:var(--mut);cursor:pointer}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.mcard{cursor:pointer}.mcard .t{font-weight:700;margin-bottom:4px}
+.meta{font-size:13px;color:var(--mut);margin-top:2px}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:#e2e8f0;color:#334155;vertical-align:middle}
+.badge.Siap{background:#dcfce7;color:#166534}.badge.Dihantar{background:#dbeafe;color:#1e40af}.badge.Disemak{background:#ede9fe;color:#5b21b6}
+.ag{border-left:4px solid var(--navy)}
+.aghd{display:flex;gap:8px;align-items:center}.aghd input{font-weight:700}
+.note{border:1px solid var(--line);border-radius:10px;padding:8px;margin:8px 0;background:#fafcfd}
+.note .nh{display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.note select{width:auto;padding:4px 8px;font-size:13px;font-weight:700;border-radius:999px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 8px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.chip.on{color:#fff}
+.cmp{display:flex;gap:6px;align-items:flex-end}.cmp textarea{flex:1}
+.mic{border:1px solid var(--line);background:#fff;border-radius:10px;width:44px;height:44px;font-size:18px;flex:none;cursor:pointer}
+.mic.on{background:#fee2e2;border-color:#ef4444;animation:pl 1s infinite}
+@keyframes pl{50%{opacity:.45}}
+.paper{background:#fff;border:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.06);padding:28px 30px;font-family:Arial,sans-serif;font-size:15px;line-height:1.45;overflow-x:auto}
+.paper table{border-collapse:collapse;width:100%}
+.paper td,.paper th{border:1px solid #000;padding:5px;font-size:14px;vertical-align:top}
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:.2s;pointer-events:none;z-index:20;max-width:90%;text-align:center}
+#toast.show{opacity:1}
+.hint{font-size:13px;color:var(--mut);margin:6px 0}
+.empty{text-align:center;color:var(--mut);padding:30px 10px}
+.td{display:flex;gap:10px;align-items:flex-start}
+.td input[type=checkbox]{width:22px;height:22px;flex:none;margin-top:2px}
+.late{color:#b91c1c;font-weight:700}
+.done .tx{text-decoration:line-through;color:var(--mut)}
+details summary{cursor:pointer;font-weight:700;color:var(--teal)}
+.warn{background:#fff7ed;border-color:#fed7aa}
+.recbar{position:sticky;top:calc(60px + env(safe-area-inset-top));z-index:4;background:#7f1d1d;color:#fff;border-radius:12px;padding:10px 12px;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.recbar .dot{width:12px;height:12px;border-radius:50%;background:#f87171;animation:pl 1s infinite}
+.recbar .dot.p{animation:none;background:#fbbf24}
+.recbar b{font-variant-numeric:tabular-nums;font-size:20px}
+.recbar .cur{flex:1 1 100%;font-size:13px;opacity:.92}
+.recbar .btn{background:#fff;color:#7f1d1d}
+.recbar .btn.nx{background:#fbbf24;color:#422006}
+.ag.now{border-left-color:#dc2626;box-shadow:0 0 0 2px #fecaca}
+.seg{font:inherit;font-size:13px;font-weight:700;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px;white-space:nowrap;cursor:pointer;color:var(--teal);margin-top:8px}
+.seg.mk{color:#b91c1c;border-color:#fecaca}
+#recInd{margin-left:auto;background:#dc2626;color:#fff;border:0;border-radius:999px;padding:6px 10px;font:inherit;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;cursor:pointer}
+#player{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));z-index:6;background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 14px rgba(0,0,0,.08);padding:8px 12px}
+#player .pt{display:flex;gap:6px;align-items:center;font-size:13px;margin-bottom:4px}
+#player .pt b{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#player .sp{border:1px solid var(--line);background:#fff;border-radius:8px;padding:3px 7px;font:inherit;font-size:12px;cursor:pointer}
+#player .sp.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+#player audio{width:100%;height:40px}
+body.hasPlayer{padding-bottom:190px}
+#printArea{display:none}
+@media print{
+  body{background:#fff;padding:0}
+  body.printing>*:not(#printArea){display:none!important}
+  body.printing #printArea{display:block;font-family:Arial,sans-serif;font-size:13pt;line-height:1.35}
+  #printArea table{border-collapse:collapse;width:100%}
+  #printArea td,#printArea th{border:1px solid #000;padding:4pt;font-size:12pt;vertical-align:top}
+  @page{size:A4;margin:2cm 2cm 2cm 2.5cm}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="logo.png" alt="" onerror="this.remove()">
+  <div><b>Laporan Wakil Mesyuarat</b><small>Jabatan Kesihatan Negeri Kedah</small></div>
+  <button id="recInd" hidden data-act="rgo">●</button>
+</header>
+<main id="app"></main>
+<nav class="bnav">
+  <button data-nav="list"><span>📋</span>Mesyuarat</button>
+  <button data-nav="tindakan"><span>✅</span>Tindakan</button>
+  <button data-nav="semakan"><span>📥</span>Semakan</button>
+  <button data-nav="tetapan"><span>⚙️</span>Tetapan</button>
+</nav>
+<div id="player" hidden><div class="pt"><b id="plLbl">Rakaman mesyuarat</b><button class="sp on" data-sp="1">1×</button><button class="sp" data-sp="1.25">1.25×</button><button class="sp" data-sp="1.5">1.5×</button><button class="sp" data-sp="2">2×</button></div><audio id="aud" controls preload="metadata"></audio></div>
+<div id="toast"></div>
+<div id="printArea"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const LS='lwm_v1';
+const HARI=['Ahad','Isnin','Selasa','Rabu','Khamis','Jumaat','Sabtu'];
+const BULAN=['Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
+const JENIS={makluman:['Makluman','#475569'],keputusan:['Keputusan','#1d4ed8'],tindakan:['Tindakan JKN','#b45309'],perhatian:['Perhatian Boss','#b91c1c']};
+const JABATAN='Jabatan Kesihatan Negeri Kedah';
+const DEF_RECIP=[
+  {id:'pkn',nama:"Dr. Nor'Aishah binti Abu Bakar",jawatan:'Pengarah Kesihatan Negeri',jabatan:JABATAN,salam:'YBrs. Dr.,'},
+  {id:'tpkn',nama:'Dr. Shareh Azizan Shareh Ali',jawatan:'Timbalan Pengarah Kesihatan Negeri',jabatan:JABATAN,salam:'YBrs. Dr.,'},
+  {id:'kppk',nama:'Dr. Muhamad Fadhil bin Mohamad Marzuki',jawatan:'Ketua Penolong Pengarah Kanan (NCD)',jabatan:JABATAN,salam:'YBrs. Dr.,'}
+];
+
+let S={meetings:[],profile:{nama:'',sign:''},recipients:JSON.parse(JSON.stringify(DEF_RECIP)),sync:{url:'',key:''}};
+let U={view:'list',cur:null,sub:'info',q:'',comp:{},draft:{},tdAll:false,rv:[],rvOpen:null,rvQ:''};
+
+/* ---------- storan ---------- */
+function load(){try{const d=JSON.parse(localStorage.getItem(LS));if(d){S=Object.assign(S,d);S.meetings=(S.meetings||[]).map(normalize);S.meetings.forEach(m=>{if(m.rakaman&&m.rakaman.status==='merakam')m.rakaman.status='siap'})}}catch(e){}}
+function save(){try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){toast('Gagal simpan dalam peranti')}}
+let saveT;function saveSoon(){clearTimeout(saveT);saveT=setTimeout(save,400)}
+
+/* ---------- utiliti ---------- */
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nl2br=s=>esc(s).replace(/\n/g,'<br>');
+const lines=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
+function today(){const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)}
+function fmtTarikh(iso,hari=true){if(!iso)return'';const[y,mo,d]=String(iso).slice(0,10).split('-').map(Number);if(!y)return iso;const dt=new Date(y,mo-1,d);return `${d} ${BULAN[mo-1]} ${y}`+(hari?` (${HARI[dt.getDay()]})`:'')}
+function fmtMasa(t){if(!t)return'';const[h,mi]=t.split(':').map(Number);const s=h<12?'pagi':h<14?'tengah hari':h<19?'petang':'malam';return `${h%12||12}.${String(mi).padStart(2,'0')} ${s}`}
+function masaRange(m){const a=fmtMasa(m.masaMula),b=fmtMasa(m.masaTamat);return a&&b?`${a} hingga ${b}`:a}
+function roman(n){const r=[['x',10],['ix',9],['v',5],['iv',4],['i',1]];let s='';for(const[k,v]of r)while(n>=v){s+=k;n-=v}return s}
+function autosize(t){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px'}
+let toastT;function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2600)}
+function dl(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
+function slug(s){return String(s||'').replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'_').slice(0,50)}
+async function copyText(t){try{await navigator.clipboard.writeText(t);toast('Disalin ✓ — tampal di WhatsApp')}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Disalin ✓')}catch(_){toast('Gagal salin')}ta.remove()}}
+
+function normalize(m){
+  const D={tajuk:'',tarikh:today(),masaMula:'',masaTamat:'',tempat:'',penganjur:'',pengerusi:'',rujukan:'',mewakili:'',wakilStaf:'',kepada:'',wakilNama:'',wakilSign:'',tarikhLaporan:today(),ringkasan:'',ulasan:'',lampiran:'',status:'Draf',rakaman:null,agenda:[],created:Date.now(),updated:Date.now()};
+  m=Object.assign(D,m||{});
+  m.agenda=(m.agenda||[]).map(a=>({id:a.id||uid(),tajuk:a.tajuk||'',nota:(a.nota||[]).map(n=>Object.assign({id:uid(),jenis:'makluman',teks:'',pic:'',tarikhAkhir:'',selesai:false},n))}));
+  return m;
+}
+function newM(){return normalize({id:uid(),kepada:S.recipients[0]?.id||'',wakilNama:S.profile.nama,wakilSign:S.profile.sign})}
+const cur=()=>S.meetings.find(m=>m.id===U.cur);
+function getRecip(m,preferSnap){
+  const loc=S.recipients.find(r=>r.id===m.kepada);
+  return (preferSnap&&m.kepadaSnap)||loc||m.kepadaSnap||{nama:'',jawatan:'',jabatan:JABATAN,salam:'YBrs. Dr.,'};
+}
+const tdOf=m=>m.agenda.flatMap(a=>a.nota.filter(n=>n.jenis==='tindakan').map(n=>({m,a,n})));
+function touch(){const m=cur();if(m){m.updated=Date.now();saveSoon()}}
+
+/* ---------- penjana laporan (format minit bebas) ---------- */
+function buildReport(m,preferSnap){
+  const r=getRecip(m,preferSnap);
+  const salam=r.salam||'YBrs. Dr.,';
+  const sal=salam.replace(/,\s*$/,'');
+  const J='text-align:justify;margin:0 0 9pt';
+  let n=0;
+  const NB=w=>`display:inline-block;min-width:${w}pt;text-indent:0`;
+  const P=t=>`<p style="${J}"><span style="${NB(32)}">${++n}.</span>${t}</p>`;
+  const SUB=(lbl,t)=>`<p style="${J};margin-left:56pt;text-indent:-24pt"><span style="${NB(24)}">${lbl}</span>${t}</p>`;
+  let h=`<p style="text-align:center;margin:0 0 14pt"><b><u>MINIT BEBAS</u></b></p>`;
+  h+=`<p style="margin:0"><b>${esc(r.nama)}</b></p><p style="margin:0">${esc(r.jawatan)}</p><p style="margin:0 0 12pt">${esc(r.jabatan||JABATAN)}</p>`;
+  h+=`<p style="margin:0 0 12pt">${esc(salam)}</p>`;
+  let tj=(m.tajuk||'Mesyuarat').trim().replace(/\.$/,'');
+  if(!/^laporan/i.test(tj))tj='Laporan '+tj;
+  h+=`<p style="margin:0 0 12pt"><b>TAJUK: ${esc(tj.toUpperCase())}.</b></p>`;
+
+  h+=P(`Dengan segala hormatnya saya merujuk kepada perkara tersebut di atas${m.rujukan?` dan surat/jemputan rujukan ${esc(m.rujukan)}`:''}.`);
+
+  const subj=m.wakilStaf?esc(m.wakilStaf):'saya';
+  let p2=`Dimaklumkan bahawa ${subj} telah ${m.mewakili?`mewakili ${esc(m.mewakili)} untuk `:''}menghadiri ${esc(m.tajuk||'mesyuarat tersebut')} yang telah diadakan pada ${fmtTarikh(m.tarikh)}`;
+  const masa=masaRange(m); if(masa)p2+=`, jam ${masa}`;
+  if(m.tempat)p2+=` bertempat di ${esc(m.tempat)}`;
+  p2+='.';
+  if(m.penganjur&&m.pengerusi)p2+=` Mesyuarat ini dianjurkan oleh ${esc(m.penganjur)} dan dipengerusikan oleh ${esc(m.pengerusi)}.`;
+  else if(m.penganjur)p2+=` Mesyuarat ini dianjurkan oleh ${esc(m.penganjur)}.`;
+  else if(m.pengerusi)p2+=` Mesyuarat ini dipengerusikan oleh ${esc(m.pengerusi)}.`;
+  h+=P(p2);
+
+  const ring=lines(m.ringkasan);
+  if(ring.length){h+=P(`Ringkasan perkara utama untuk makluman ${sal} adalah seperti berikut:`);ring.forEach((l,i)=>h+=SUB(`${roman(i+1)}.`,esc(l)))}
+
+  const ags=m.agenda.filter(a=>a.nota.some(x=>x.teks.trim()));
+  if(ags.length){
+    h+=P('Perkara yang dibentangkan dan dibincangkan dalam mesyuarat adalah seperti berikut:');
+    const base=n;
+    ags.forEach((a,k)=>{
+      h+=`<p style="margin:0 0 9pt 32pt;text-indent:-32pt"><b><span style="${NB(32)}">${base}.${k+1}</span>${esc(a.tajuk||'Perkara '+(k+1))}</b></p>`;
+      a.nota.filter(x=>x.teks.trim()).forEach((x,j)=>{
+        const lab=x.jenis==='keputusan'?'<b>Keputusan:</b> ':x.jenis==='tindakan'?'<b>Tindakan:</b> ':x.jenis==='perhatian'?'<b>Untuk perhatian:</b> ':'';
+        let ex='';
+        if(x.jenis==='tindakan'&&(x.pic||x.tarikhAkhir))ex=` <i>(${[x.pic&&'Oleh: '+esc(x.pic),x.tarikhAkhir&&'Tarikh akhir: '+fmtTarikh(x.tarikhAkhir,false)].filter(Boolean).join('; ')})</i>`;
+        h+=`<p style="${J};margin-left:60pt;text-indent:-28pt"><span style="${NB(28)}">(${String.fromCharCode(97+j)})</span>${lab}${nl2br(x.teks.trim())}${ex}</p>`;
+      });
+    });
+  }
+
+  const tds=tdOf(m).filter(x=>x.n.teks.trim());
+  if(tds.length){
+    h+=P(`Tindakan susulan yang perlu diambil oleh pihak ${JABATAN} adalah seperti berikut:`);
+    h+=`<table style="border-collapse:collapse;width:100%;margin:0 0 10pt"><tr style="background:#e5e7eb"><th style="border:1px solid #000;padding:4pt;width:7%;text-align:center">Bil.</th><th style="border:1px solid #000;padding:4pt;text-align:left">Tindakan</th><th style="border:1px solid #000;padding:4pt;width:24%;text-align:left">Tindakan Oleh</th><th style="border:1px solid #000;padding:4pt;width:18%;text-align:center">Tarikh Akhir</th></tr>`;
+    tds.forEach(({n:x},i)=>h+=`<tr><td style="border:1px solid #000;padding:4pt;text-align:center;vertical-align:top">${i+1}.</td><td style="border:1px solid #000;padding:4pt;text-align:justify;vertical-align:top">${nl2br(x.teks.trim())}</td><td style="border:1px solid #000;padding:4pt;vertical-align:top">${esc(x.pic||'-')}</td><td style="border:1px solid #000;padding:4pt;text-align:center;vertical-align:top">${x.tarikhAkhir?fmtTarikh(x.tarikhAkhir,false):'-'}</td></tr>`);
+    h+='</table>';
+  }
+
+  const ul=lines(m.ulasan);
+  if(ul.length===1)h+=P(`Ulasan dan cadangan saya untuk pertimbangan ${sal}: ${esc(ul[0])}`);
+  else if(ul.length>1){h+=P(`Ulasan dan cadangan saya untuk pertimbangan ${sal} adalah seperti berikut:`);ul.forEach((l,i)=>h+=SUB(`${roman(i+1)}.`,esc(l)))}
+
+  if(m.lampiran.trim())h+=P(`Bersama-sama ini dilampirkan ${esc(m.lampiran.trim().replace(/\.$/,''))} untuk rujukan ${sal}.`);
+  h+=P(`Laporan ini dikemukakan untuk makluman dan tindakan ${sal} selanjutnya.`);
+  h+=`<p style="margin:0 0 9pt">Sekian, terima kasih.</p><p style="margin:0">&nbsp;</p><p style="margin:0">&nbsp;</p>`;
+  h+=`<p style="margin:0">........................................................</p>`;
+  h+=`<p style="margin:0">(${esc((m.wakilNama||'').toUpperCase())})</p>`;
+  lines(m.wakilSign).forEach(l=>h+=`<p style="margin:0">${esc(l)}</p>`);
+  h+=`<p style="margin:0">Tarikh : ${fmtTarikh(m.tarikhLaporan||today(),false)}</p>`;
+  return h;
+}
+
+function dlWord(m,snap){
+  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${esc(m.tajuk)}</title><!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]--><style>@page WordSection1{size:21cm 29.7cm;margin:2cm 2cm 2cm 2.5cm}div.WordSection1{page:WordSection1}body,p{font-family:Arial;font-size:13pt}td,th{font-family:Arial;font-size:12pt}</style></head><body><div class="WordSection1">${buildReport(m,snap)}</div></body></html>`;
+  dl(new Blob(['﻿',html],{type:'application/msword'}),`Laporan_${m.tarikh||''}_${slug(m.tajuk)||'Mesyuarat'}.doc`);
+  toast('Fail Word dimuat turun');
+}
+function doPrint(m,snap){
+  $('#printArea').innerHTML=buildReport(m,snap);
+  document.body.classList.add('printing');
+  setTimeout(()=>window.print(),60);
+}
+window.addEventListener('afterprint',()=>document.body.classList.remove('printing'));
+
+function waText(m){
+  const L=['*LAPORAN MESYUARAT*','*'+(m.tajuk||'')+'*','📅 '+fmtTarikh(m.tarikh)+(m.masaMula?', '+masaRange(m):'')];
+  if(m.tempat)L.push('📍 '+m.tempat);
+  if(m.pengerusi)L.push('Pengerusi: '+m.pengerusi);
+  L.push('Wakil: '+(m.wakilStaf||m.wakilNama||'')+(m.mewakili?' (mewakili '+m.mewakili+')':''));
+  const ring=lines(m.ringkasan);
+  if(ring.length){L.push('','*Perkara utama:*');ring.forEach((l,i)=>L.push(`${i+1}. ${l}`))}
+  const tds=tdOf(m).filter(x=>x.n.teks.trim());
+  if(tds.length){L.push('','*Tindakan JKN Kedah:*');tds.forEach(({n})=>L.push(`• ${n.teks.trim()}${n.pic?' — '+n.pic:''}${n.tarikhAkhir?' ('+fmtTarikh(n.tarikhAkhir,false)+')':''}`))}
+  if(m.ulasan.trim())L.push('','*Ulasan wakil:*',m.ulasan.trim());
+  L.push('','_Laporan bertulis penuh akan dikemukakan._');
+  return L.join('\n');
+}
+
+/* ---------- Google Sheet ---------- */
+async function api(p){
+  if(!S.sync.url)throw new Error('URL Google Sheet belum ditetapkan');
+  const res=await fetch(S.sync.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({},p,{key:S.sync.key}))});
+  const j=await res.json();
+  if(!j.ok)throw new Error(j.error||'Ralat pelayan');
+  return j;
+}
+async function sendSheet(m){
+  if(!S.sync.url){toast('Tetapkan sambungan Google Sheet di Tetapan dahulu');return}
+  if(!m.tajuk.trim()){toast('Isi tajuk mesyuarat dahulu');return}
+  m.kepadaSnap=Object.assign({},getRecip(m));
+  toast('Menghantar…');
+  try{await api({action:'save',report:m});m.status='Dihantar';m.sentAt=Date.now();save();rr();toast('Berjaya dihantar ke Google Sheet ✓')}
+  catch(e){toast('Gagal: '+e.message)}
+}
+async function testSync(){toast('Menguji…');try{const j=await api({action:'ping'});toast(`Sambungan berjaya ✓ (${j.count} laporan dalam Sheet)`)}catch(e){toast('Gagal: '+e.message)}}
+async function rvLoad(){
+  toast('Memuatkan…');
+  try{const j=await api({action:'list'});
+    U.rv=j.rows.map(r=>{let d={};try{d=JSON.parse(r.data)}catch(e){}return Object.assign({},r,{data:normalize(d)})}).sort((a,b)=>String(b.masa).localeCompare(String(a.masa)));
+    U.rvOpen=null;rr();toast(U.rv.length+' laporan dimuatkan');
+  }catch(e){toast('Gagal: '+e.message)}
+}
+async function rvReview(){
+  const r=U.rv[U.rvOpen];const ul=($('#rvUl')||{}).value||'';
+  toast('Menyimpan…');
+  try{await api({action:'review',id:r.id,ulasan:ul,penyemak:S.profile.nama});r.status='Disemak';r.ulasan=ul;r.penyemak=S.profile.nama;rr();toast('Ditanda Disemak ✓')}
+  catch(e){toast('Gagal: '+e.message)}
+}
+function rvCopy(){
+  const r=U.rv[U.rvOpen];
+  const c=normalize(JSON.parse(JSON.stringify(r.data)));
+  c.id=uid();c.status='Draf';c.wakilStaf=r.data.wakilStaf||r.data.wakilNama||'';
+  c.wakilNama=S.profile.nama;c.wakilSign=S.profile.sign;c.kepada=S.recipients[0]?.id||'';c.tarikhLaporan=today();
+  delete c.kepadaSnap;delete c.sentAt;c.created=c.updated=Date.now();
+  S.meetings.push(c);save();U.cur=c.id;U.sub='info';go('edit');
+  toast('Disalin. Semak "Laporan kepada" dan "Mewakili" sebelum menjana laporan.');
+}
+
+/* ---------- input suara (diktasi, hidup semula automatik) ---------- */
+let rec=null,recId=null,dictWant=false;
+const SRC=()=>window.SpeechRecognition||window.webkitSpeechRecognition;
+function stopDict(){dictWant=false;if(rec){rec.onend=null;try{rec.stop()}catch(e){}rec=null}document.querySelectorAll('.mic.on').forEach(b=>b.classList.remove('on'))}
+function toggleMic(btn,id){
+  if(!SRC()){toast('Pelayar ini tidak menyokong input suara. Guna Chrome, atau mikrofon papan kekunci telefon.');return}
+  const same=dictWant&&recId===id;
+  stopDict();
+  if(same)return;
+  dictWant=true;recId=id;btn.classList.add('on');startDict();
+  toast('Sedang mendengar… tekan 🎤 sekali lagi untuk berhenti');
+}
+function startDict(){
+  const SR=SRC();rec=new SR();rec.lang='ms-MY';rec.continuous=true;rec.interimResults=false;
+  rec.onresult=e=>{const ta=document.getElementById(recId);if(!ta)return;
+    for(let i=e.resultIndex;i<e.results.length;i++)if(e.results[i].isFinal){
+      ta.value=(ta.value.trim()?ta.value.replace(/\s*$/,' '):'')+e.results[i][0].transcript.trim();
+      ta.dispatchEvent(new Event('input',{bubbles:true}));
+    }};
+  rec.onerror=e=>{if(['not-allowed','service-not-allowed','audio-capture'].includes(e.error)){dictWant=false;toast(e.error==='audio-capture'?'Mikrofon sedang digunakan (mungkin oleh rakaman). Taip nota secara manual.':'Akses mikrofon / servis suara ditolak')}};
+  rec.onend=()=>{rec=null;if(dictWant&&document.getElementById(recId))setTimeout(()=>{if(dictWant&&!rec)try{startDict()}catch(e){}},250);else stopDict()};
+  try{rec.start()}catch(e){}
+}
+const MIC=id=>`<button class="mic${dictWant&&recId===id?' on':''}" data-mic="${id}" title="Input suara">🎤</button>`;
+
+/* ---------- rakaman audio mesyuarat ---------- */
+let RS=null;
+const hms=s=>{s=Math.max(0,Math.floor(s||0));const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0')};
+const mb=b=>((b||0)/1048576).toFixed(1)+' MB';
+let dbP;
+function db(){return dbP||(dbP=new Promise((res,rej)=>{const r=indexedDB.open('lwm_audio',1);r.onupgradeneeded=()=>r.result.createObjectStore('chunks',{keyPath:['mid','seq']});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}))}
+const krange=mid=>IDBKeyRange.bound([mid,0],[mid,Number.MAX_SAFE_INTEGER]);
+async function idbPut(mid,seq,buf){const d=await db();return new Promise((res,rej)=>{const tx=d.transaction('chunks','readwrite');tx.objectStore('chunks').put({mid,seq,buf});tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error)})}
+async function idbAll(mid){const d=await db();return new Promise((res,rej)=>{const out=[];const rq=d.transaction('chunks').objectStore('chunks').openCursor(krange(mid));rq.onsuccess=()=>{const c=rq.result;if(c){out.push(c.value.buf);c.continue()}else res(out)};rq.onerror=()=>rej(rq.error)})}
+async function idbDel(mid){const d=await db();return new Promise((res,rej)=>{const tx=d.transaction('chunks','readwrite');tx.objectStore('chunks').delete(krange(mid));tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error)})}
+
+const recElapsed=()=>RS?RS.acc+(RS.paused?0:(Date.now()-RS.segStart)/1000):0;
+const isRec=m=>!!(m&&RS&&RS.mid===m.id);
+async function wake(){try{if(RS&&navigator.wakeLock)RS.wl=await navigator.wakeLock.request('screen')}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&RS)wake()});
+window.addEventListener('beforeunload',e=>{if(RS){e.preventDefault();e.returnValue=''}});
+
+async function recStart(){
+  const m=cur();if(!m)return;
+  if(RS){toast('Rakaman lain sedang berjalan');return}
+  if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){toast('Pelayar ini tidak menyokong rakaman audio');return}
+  if(m.rakaman&&!confirm('Rakaman sedia ada bagi mesyuarat ini akan dipadam. Teruskan?'))return;
+  let stream;
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:true,autoGainControl:true}})}
+  catch(e){toast('Akses mikrofon tidak dibenarkan');return}
+  stopDict();
+  await idbDel(m.id);revokeAudio(m.id);
+  const mime=['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg;codecs=opus'].find(t=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(t))||'';
+  let mr;
+  try{mr=new MediaRecorder(stream,Object.assign({audioBitsPerSecond:32000},mime?{mimeType:mime}:{}))}catch(e){mr=new MediaRecorder(stream)}
+  const mid=m.id;let seq=0;
+  RS={mr,mid,stream,acc:0,segStart:Date.now(),paused:false,chain:Promise.resolve()};
+  m.rakaman={mime:mr.mimeType||mime||'audio/webm',marks:[],durasi:0,bytes:0,mula:Date.now(),status:'merakam'};
+  mr.ondataavailable=e=>{
+    if(!e.data||!e.data.size)return;
+    const s=seq++,blob=e.data,r=RS;
+    r.chain=r.chain.then(async()=>{
+      await idbPut(mid,s,await blob.arrayBuffer());
+      const mm=S.meetings.find(x=>x.id===mid);
+      if(mm&&mm.rakaman){mm.rakaman.bytes+=blob.size;if(RS===r)mm.rakaman.durasi=Math.floor(recElapsed());saveSoon()}
+    }).catch(err=>toast('Gagal simpan audio: '+err.message));
+  };
+  mr.onerror=e=>toast('Ralat rakaman: '+(e.error?.message||''));
+  mr.onstop=()=>{
+    const r=RS,fin=Math.floor(recElapsed());
+    stream.getTracks().forEach(t=>t.stop());clearInterval(r.tick);
+    try{r.wl&&r.wl.release()}catch(e){}
+    r.chain.then(()=>{
+      const mm=S.meetings.find(x=>x.id===mid);
+      if(mm&&mm.rakaman){mm.rakaman.status='siap';mm.rakaman.durasi=fin}
+      RS=null;save();rr();toast('Rakaman disimpan ✓');
+    });
+  };
+  mr.start(5000);
+  RS.tick=setInterval(recTick,1000);
+  wake();save();rr();
+  toast('Rakaman bermula. Biarkan skrin hidup dan app terbuka.');
+}
+function recTick(){const t=hms(recElapsed());const el=document.getElementById('recT');if(el)el.textContent=t;$('#recInd').textContent='● '+t}
+function recPause(){
+  if(!RS)return;
+  if(RS.paused){RS.mr.resume();RS.segStart=Date.now();RS.paused=false}
+  else{RS.mr.pause();RS.acc+=(Date.now()-RS.segStart)/1000;RS.paused=true}
+  rr();
+}
+function recStop(){if(RS&&confirm("Hentikan rakaman?"))RS.mr.stop()}
+const curMark=m=>{const R=m.rakaman;return R&&R.marks.length?R.marks[R.marks.length-1]:null};
+function recMark(m,aid){
+  const t=Math.floor(recElapsed()),R=m.rakaman;
+  R.marks=R.marks.filter(x=>x.aid!==aid);R.marks.push({aid,t});R.marks.sort((a,b)=>a.t-b.t);
+  touch();rr();
+  const i=m.agenda.findIndex(x=>x.id===aid);
+  toast(`Agenda ${i+1} ditanda pada ${hms(t)}`);
+}
+function recNext(m){
+  if(!m.agenda.length){toast('Tambah agenda dahulu');return}
+  const last=curMark(m);
+  const i=last?m.agenda.findIndex(a=>a.id===last.aid)+1:0;
+  if(i>=m.agenda.length){toast('Sudah di agenda terakhir');return}
+  recMark(m,m.agenda[i].id);
+}
+function segOf(m,aid){
+  const R=m.rakaman;if(!R)return null;
+  const i=R.marks.findIndex(x=>x.aid===aid);if(i<0)return null;
+  return{s:R.marks[i].t,e:R.marks[i+1]?R.marks[i+1].t:R.durasi};
+}
+
+/* pemain audio kekal (di luar #app supaya tidak terhenti semasa menyunting nota) */
+const AUD={};let audLoading=false;
+function revokeAudio(mid){if(AUD[mid]&&AUD[mid]!=='none')URL.revokeObjectURL(AUD[mid]);delete AUD[mid];const a=$('#aud');if(a.dataset.mid===mid){a.pause();a.removeAttribute('src');a.dataset.mid=''}}
+async function ensureAudio(m){
+  if(AUD[m.id]||audLoading)return;
+  audLoading=true;
+  try{const bufs=await idbAll(m.id);AUD[m.id]=bufs.length?URL.createObjectURL(new Blob(bufs,{type:m.rakaman.mime})):'none'}catch(e){AUD[m.id]='none'}
+  audLoading=false;syncPlayer();
+}
+function syncPlayer(){
+  const m=U.view==='edit'&&cur();
+  const show=!!(m&&m.rakaman&&m.rakaman.status==='siap'&&!isRec(m));
+  const box=$('#player'),a=$('#aud');
+  if(!show){box.hidden=true;document.body.classList.remove('hasPlayer');if(!a.paused)a.pause();return}
+  if(!AUD[m.id]){ensureAudio(m);box.hidden=true;return}
+  if(AUD[m.id]==='none'){box.hidden=true;return}
+  box.hidden=false;document.body.classList.add('hasPlayer');
+  if(a.dataset.mid!==m.id){a.dataset.mid=m.id;a.dataset.fix='';a.src=AUD[m.id];$('#plLbl').textContent='Rakaman mesyuarat'}
+}
+(function(){
+  const a=()=>$('#aud');
+  document.addEventListener('DOMContentLoaded',()=>{});
+  window.addEventListener('load',()=>{
+    const el=a();
+    // webm daripada MediaRecorder tiada maklumat tempoh; paksa pelayar mengiranya supaya boleh 'seek'
+    el.addEventListener('loadedmetadata',()=>{if(el.duration===Infinity&&!el.dataset.fix){el.dataset.fix='1';el.currentTime=1e101;el.addEventListener('timeupdate',function f(){el.removeEventListener('timeupdate',f);el.currentTime=el.dataset.seek?+el.dataset.seek:0;el.dataset.seek=''})}});
+    el.addEventListener('timeupdate',()=>{
+      const m=cur();if(!m||!m.rakaman||el.dataset.mid!==m.id)return;
+      const t=el.currentTime;let lbl='Rakaman mesyuarat';
+      m.rakaman.marks.forEach((k,i)=>{if(t>=k.t){const ai=m.agenda.findIndex(x=>x.id===k.aid);if(ai>=0)lbl=`Sedang didengar: ${ai+1}. ${m.agenda[ai].tajuk}`}});
+      const L=$('#plLbl');if(L.textContent!==lbl)L.textContent=lbl;
+    });
+  });
+})();
+function playSeg(m,aid){
+  const sg=segOf(m,aid),a=$('#aud');if(!sg||!a.src)return;
+  if(a.duration===Infinity||isNaN(a.duration)){a.dataset.seek=sg.s}
+  try{a.currentTime=sg.s}catch(e){}
+  a.play().catch(()=>{});
+}
+async function recDl(m){
+  const bufs=await idbAll(m.id);if(!bufs.length){toast('Tiada audio');return}
+  const t=m.rakaman.mime,ext=/mp4/.test(t)?'m4a':/ogg/.test(t)?'ogg':'webm';
+  dl(new Blob(bufs,{type:t}),`Rakaman_${m.tarikh}_${slug(m.tajuk)||'Mesyuarat'}.${ext}`);
+}
+function marksText(m){
+  const R=m.rakaman;if(!R)return'';
+  return [`Penanda masa rakaman: ${m.tajuk}`,...R.marks.map(k=>{const i=m.agenda.findIndex(x=>x.id===k.aid);return `${hms(k.t)}  Agenda ${i+1}. ${m.agenda[i]?.tajuk||''}`}),`${hms(R.durasi)}  Tamat`].join('\n');
+}
+async function recDel(m){
+  if(!confirm('Padam rakaman audio? Nota tidak terjejas.'))return;
+  await idbDel(m.id);revokeAudio(m.id);m.rakaman=null;touch();rr();toast('Rakaman dipadam');
+}
+
+/* ---------- paparan ---------- */
+function render(){
+  let h;
+  if(U.view==='edit')h=vEdit();else if(U.view==='tindakan')h=vTd();else if(U.view==='semakan')h=vRv();else if(U.view==='tetapan')h=vSet();else h=vList();
+  app.innerHTML=h;
+  app.querySelectorAll('textarea').forEach(autosize);
+  document.querySelectorAll('.bnav button').forEach(b=>b.classList.toggle('on',b.dataset.nav===(U.view==='edit'?'list':U.view)));
+  const ri=$('#recInd');ri.hidden=!RS;if(RS)ri.textContent='● '+hms(recElapsed());
+  syncPlayer();
+}
+function rr(){const y=scrollY;render();scrollTo(0,y)}
+function go(v){U.view=v;if(v!=='semakan')U.rvOpen=null;render();scrollTo(0,0)}
+
+function vList(){
+  let h='';
+  if(!S.profile.nama)h+=`<div class="card warn"><b>Langkah pertama:</b> isi nama dan blok tandatangan anda di <a href="#" data-act="nav" data-v="tetapan">Tetapan</a>.</div>`;
+  h+=`<div class="bar" style="margin-bottom:12px"><button class="btn" data-act="new">＋ Mesyuarat Baharu</button></div>`;
+  if(S.meetings.length>3)h+=`<input placeholder="Cari tajuk / tempat / penganjur…" data-u="q" value="${esc(U.q)}" style="margin-bottom:12px">`;
+  const q=U.q.toLowerCase();
+  const list=S.meetings.filter(m=>!q||(m.tajuk+' '+m.tempat+' '+m.penganjur).toLowerCase().includes(q))
+    .sort((a,b)=>(b.tarikh||'').localeCompare(a.tarikh||'')||b.updated-a.updated);
+  if(!list.length)h+=`<div class="empty">Belum ada rekod mesyuarat.<br>Tekan <b>＋ Mesyuarat Baharu</b> untuk mula.</div>`;
+  for(const m of list){
+    const t=tdOf(m).filter(x=>!x.n.selesai&&x.n.teks.trim()).length;
+    h+=`<div class="card mcard" data-act="open" data-id="${m.id}"><div class="t">${esc(m.tajuk||'(Tiada tajuk)')} <span class="badge ${m.status}">${m.status}</span></div>
+    <div class="meta">📅 ${fmtTarikh(m.tarikh)}${m.tempat?' · 📍 '+esc(m.tempat):''}</div>
+    ${m.mewakili||t?`<div class="meta">${m.mewakili?'Mewakili: '+esc(m.mewakili):''}${m.mewakili&&t?' · ':''}${t?`<span class="late">${t} tindakan belum selesai</span>`:''}</div>`:''}</div>`;
+  }
+  return h;
+}
+
+function F(m,label,key,type='text',ph=''){return `<label>${label}</label><input type="${type}" data-m="${key}" value="${esc(m[key])}" placeholder="${esc(ph)}">`}
+
+function vEdit(){
+  const m=cur();if(!m){U.view='list';return vList()}
+  const tabs=[['info','1. Maklumat'],['nota','2. Nota'],['ulasan','3. Ringkasan'],['laporan','4. Laporan']];
+  let h=`<div class="bar" style="margin-bottom:10px"><button class="btn sec sm" data-act="nav" data-v="list">← Senarai</button><span class="badge ${m.status}">${m.status}</span><span style="flex:1"></span><button class="btn red sm" data-act="delm">Padam</button></div>`;
+  if(isRec(m))h+=recBar(m);
+  h+=`<div class="tabs">${tabs.map(([k,l])=>`<button class="${U.sub===k?'on':''}" data-act="sub" data-v="${k}">${l}</button>`).join('')}</div>`;
+  h+=U.sub==='info'?eInfo(m):U.sub==='nota'?eNota(m):U.sub==='ulasan'?eUlas(m):eLap(m);
+  return h;
+}
+
+function recBar(m){
+  const k=curMark(m),ai=k?m.agenda.findIndex(a=>a.id===k.aid):-1;
+  return `<div class="recbar"><span class="dot ${RS.paused?'p':''}"></span><b id="recT">${hms(recElapsed())}</b><span style="flex:1"></span>
+  <button class="btn sm nx" data-act="rnext">⏭ Agenda seterusnya</button><button class="btn sm" data-act="rjeda">${RS.paused?'▶ Sambung':'⏸ Jeda'}</button><button class="btn sm" data-act="rhenti">■ Henti</button>
+  <div class="cur">${RS.paused?'<b style="font-size:13px">DIJEDA</b> · ':''}${ai>=0?`Sekarang: <b style="font-size:13px">${ai+1}. ${esc(m.agenda[ai].tajuk)}</b> (sejak ${hms(k.t)})`:'Tekan <b style="font-size:13px">⏭ Agenda seterusnya</b> apabila agenda pertama bermula.'}</div></div>`;
+}
+function recCard(m){
+  if(isRec(m))return '';
+  if(RS)return `<div class="card"><p class="hint" style="margin:0">🎙️ Rakaman sedang berjalan untuk mesyuarat lain. <a href="#" data-act="rgo">Buka</a></p></div>`;
+  if(!m.rakaman)return `<div class="card"><h3>🎙️ Rakaman mesyuarat</h3><p class="hint">Rakam audio penuh. Tekan ⏭ setiap kali mesyuarat beralih agenda supaya anda boleh dengar semula ikut agenda. Audio disimpan dalam telefon sahaja. Dapatkan izin pengerusi sebelum merakam.</p><button class="btn red" data-act="rmula">● Mula rakam</button></div>`;
+  const R=m.rakaman;
+  return `<div class="card"><h3>🎙️ Rakaman mesyuarat</h3><div class="meta">Tempoh ${hms(R.durasi)} · ${mb(R.bytes)} · ${R.marks.length} agenda ditanda</div>
+  <p class="hint">Tekan butang ▶ pada setiap agenda untuk mendengar bahagian itu. Pemain audio berada di bawah skrin.</p>
+  <div class="bar"><button class="btn out sm" data-act="rdl">⬇️ Audio</button><button class="btn out sm" data-act="rmk">📋 Salin penanda masa</button><button class="btn out sm" data-act="rmula">⟲ Rakam semula</button><button class="btn red sm" data-act="rdel">🗑 Padam</button></div></div>`;
+}
+function agSeg(m,a){
+  if(!m.rakaman)return'';
+  if(isRec(m)){const k=m.rakaman.marks.find(x=>x.aid===a.id);return `<button class="seg mk" data-act="rmark" data-aid="${a.id}">⏱ ${k?'Mula '+hms(k.t)+' (tanda semula)':'Tanda mula agenda ini'}</button>`}
+  const sg=segOf(m,a.id);
+  return sg?`<button class="seg" data-act="rplay" data-aid="${a.id}">▶ Dengar ${hms(sg.s)} – ${hms(sg.e)}</button>`:'';
+}
+function eInfo(m){
+  return `<div class="card"><h3>Maklumat mesyuarat</h3>
+  ${F(m,'Tajuk mesyuarat','tajuk','text','cth: Mesyuarat Jawatankuasa … Bil. 3/2026')}
+  <div class="row"><div>${F(m,'Tarikh','tarikh','date')}</div><div>${F(m,'Tempat','tempat','text','cth: Bilik Gerakan, Wisma Persekutuan')}</div></div>
+  <div class="row"><div>${F(m,'Masa mula','masaMula','time')}</div><div>${F(m,'Masa tamat','masaTamat','time')}</div></div>
+  ${F(m,'Penganjur','penganjur','text','cth: Pejabat Setiausaha Kerajaan Negeri Kedah')}
+  ${F(m,'Pengerusi','pengerusi','text','cth: YB Pengerusi Jawatankuasa …')}
+  ${F(m,'No. rujukan surat/jemputan (pilihan)','rujukan','text','')}
+  </div>
+  <div class="card"><h3>Wakil &amp; penerima laporan</h3>
+  ${F(m,'Mewakili siapa','mewakili','text','cth: Pengarah Kesihatan Negeri Kedah')}
+  <p class="hint">Kosongkan jika hadir atas kapasiti sendiri.</p>
+  <label>Laporan kepada</label><select data-m="kepada">${S.recipients.map(r=>`<option value="${r.id}" ${r.id===m.kepada?'selected':''}>${esc(r.nama)} — ${esc(r.jawatan)}</option>`).join('')}</select>
+  ${F(m,'Nama penandatangan laporan','wakilNama','text','')}
+  <label>Blok tandatangan</label><textarea data-m="wakilSign">${esc(m.wakilSign)}</textarea>
+  ${F(m,'Hadir oleh staf (jika bukan penandatangan sendiri yang hadir)','wakilStaf','text','cth: Dr. Husrul (KPP NCD)')}
+  ${F(m,'Tarikh laporan','tarikhLaporan','date')}
+  </div>
+  <div class="bar"><button class="btn" data-act="sub" data-v="nota">Seterusnya: Nota →</button></div>`;
+}
+
+function eNota(m){
+  let h=recCard(m);
+  const paste=`<p class="hint">Tampal agenda, satu item satu baris. Nombor di hadapan akan dibuang automatik.</p><textarea id="agPaste" placeholder="1. Pengesahan minit mesyuarat lalu&#10;2. Perkara berbangkit&#10;3. Pembentangan …&#10;4. Hal-hal lain"></textarea><div class="bar" style="margin-top:8px"><button class="btn sm" data-act="agadd">Tambah ke agenda</button></div>`;
+  h+=m.agenda.length?`<div class="card"><details><summary>＋ Tambah item agenda</summary>${paste}</details></div>`:`<div class="card"><h3>Agenda</h3>${paste}</div>`;
+  h+=`<p class="hint">Pilih jenis nota sebelum tekan ＋: <b style="color:${JENIS.keputusan[1]}">Keputusan</b>, <b style="color:${JENIS.tindakan[1]}">Tindakan JKN</b> (masuk ke senarai tindakan) dan <b style="color:${JENIS.perhatian[1]}">Perhatian Boss</b> (dicadang ke ringkasan).</p>`;
+  m.agenda.forEach((a,ai)=>{
+    const ct=U.comp[a.id]||'makluman';
+    const now=isRec(m)&&curMark(m)?.aid===a.id;
+    h+=`<div class="card ag${now?' now':''}"><div class="aghd"><b style="color:var(--mut)">${ai+1}.</b><input data-ag="${ai}" value="${esc(a.tajuk)}"><button class="btn red sm" data-act="agdel" data-a="${ai}" title="Padam agenda">✕</button></div>${agSeg(m,a)}`;
+    a.nota.forEach((x,ni)=>{
+      const c=JENIS[x.jenis][1];
+      h+=`<div class="note" style="border-left:4px solid ${c}"><div class="nh"><select data-note="${ai}:${ni}:jenis" style="color:${c};border-color:${c}">${Object.entries(JENIS).map(([k,[lb]])=>`<option value="${k}" ${k===x.jenis?'selected':''}>${lb}</option>`).join('')}</select><span style="flex:1"></span><button class="btn red sm" data-act="ndel" data-a="${ai}" data-n="${ni}">✕</button></div>
+      <textarea data-note="${ai}:${ni}:teks">${esc(x.teks)}</textarea>`;
+      if(x.jenis==='tindakan')h+=`<div class="row"><div><label>Tindakan oleh</label><input data-note="${ai}:${ni}:pic" value="${esc(x.pic)}" placeholder="cth: Unit NCD / semua PKD"></div><div><label>Tarikh akhir</label><input type="date" data-note="${ai}:${ni}:tarikhAkhir" value="${esc(x.tarikhAkhir)}"></div></div>
+      <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto" data-note="${ai}:${ni}:selesai" ${x.selesai?'checked':''}> Selesai</label>`;
+      h+='</div>';
+    });
+    h+=`<div class="chips">${Object.entries(JENIS).map(([k,[lb,c]])=>`<button class="chip ${k===ct?'on':''}" style="${k===ct?`background:${c};border-color:${c}`:`color:${c}`}" data-act="ctype" data-aid="${a.id}" data-v="${k}">${lb}</button>`).join('')}</div>
+    <div class="cmp"><textarea id="cmp-${a.id}" data-cmp="${a.id}" placeholder="Taip nota, atau tekan 🎤 untuk bercakap…">${esc(U.draft[a.id]||'')}</textarea>${MIC('cmp-'+a.id)}<button class="btn" data-act="nadd" data-a="${ai}" style="height:44px" title="Tambah nota">＋</button></div></div>`;
+  });
+  if(m.agenda.length)h+=`<div class="bar"><button class="btn" data-act="sub" data-v="ulasan">Seterusnya: Ringkasan →</button></div>`;
+  return h;
+}
+
+function eUlas(m){
+  return `<div class="card"><h3>Ringkasan perkara utama</h3>
+  <p class="hint">Perkara yang Boss perlu tahu, satu perkara satu baris. Akan dipaparkan sebagai i, ii, iii.</p>
+  <div class="cmp"><textarea id="ring" data-m="ringkasan">${esc(m.ringkasan)}</textarea>${MIC('ring')}</div>
+  <div class="bar" style="margin-top:8px"><button class="btn out sm" data-act="suggest">✨ Cadang daripada nota Keputusan &amp; Perhatian Boss</button></div></div>
+  <div class="card"><h3>Ulasan &amp; cadangan wakil</h3>
+  <p class="hint">Pandangan anda tentang implikasi kepada JKN Kedah, cadangan tindakan dan isu yang perlukan keputusan Boss. Satu perkara satu baris.</p>
+  <div class="cmp"><textarea id="ulas" data-m="ulasan">${esc(m.ulasan)}</textarea>${MIC('ulas')}</div></div>
+  <div class="card"><h3>Lampiran (pilihan)</h3>
+  ${F(m,'Dokumen yang dilampirkan','lampiran','text','cth: salinan slaid pembentangan dan kertas kerja mesyuarat')}</div>
+  <div class="bar"><button class="btn" data-act="sub" data-v="laporan">Seterusnya: Jana Laporan →</button></div>`;
+}
+
+function eLap(m){
+  const miss=[];if(!m.tajuk.trim())miss.push('tajuk');if(!m.wakilNama.trim())miss.push('nama penandatangan');if(!S.recipients.find(r=>r.id===m.kepada))miss.push('penerima laporan');
+  let h=miss.length?`<div class="card warn">Belum lengkap: <b>${miss.join(', ')}</b>. Lengkapkan di tab Maklumat.</div>`:'';
+  h+=`<div class="card"><div class="bar">
+  <button class="btn" data-act="word">⬇️ Word</button>
+  <button class="btn navy" data-act="print">🖨️ Cetak / PDF</button>
+  <button class="btn out" data-act="wa">💬 Salin ringkasan WhatsApp</button>
+  <button class="btn out" data-act="send">☁️ Hantar ke Google Sheet</button>
+  <button class="btn sec" data-act="siap">${m.status==='Draf'?'✓ Tanda Siap':'↺ Tanda Draf'}</button></div>
+  ${m.sentAt?`<p class="hint">Dihantar ke Sheet: ${new Date(m.sentAt).toLocaleString('ms-MY')}. Jika anda mengubah laporan, tekan Hantar semula.</p>`:''}</div>`;
+  h+=`<div class="paper">${buildReport(m)}</div>`;
+  return h;
+}
+
+function vTd(){
+  const all=S.meetings.flatMap(tdOf).filter(x=>x.n.teks.trim());
+  const open=all.filter(x=>!x.n.selesai);
+  const list=(U.tdAll?all:open).sort((a,b)=>(a.n.tarikhAkhir||'9999').localeCompare(b.n.tarikhAkhir||'9999'));
+  const t=today();
+  let h=`<div class="card"><h3>Penjejak tindakan susulan</h3><p class="hint">Semua nota bertanda <b>Tindakan JKN</b> daripada semua mesyuarat, disusun ikut tarikh akhir.</p>
+  <div class="chips"><button class="chip ${!U.tdAll?'on':''}" style="${!U.tdAll?'background:var(--teal);border-color:var(--teal)':''}" data-act="tdf" data-v="0">Belum selesai (${open.length})</button><button class="chip ${U.tdAll?'on':''}" style="${U.tdAll?'background:var(--teal);border-color:var(--teal)':''}" data-act="tdf" data-v="1">Semua (${all.length})</button></div></div>`;
+  if(!list.length)h+=`<div class="empty">${U.tdAll?'Tiada tindakan direkodkan.':'Tiada tindakan tertunggak 🎉'}</div>`;
+  for(const{m,a,n}of list){
+    const late=!n.selesai&&n.tarikhAkhir&&n.tarikhAkhir<t;
+    h+=`<div class="card td ${n.selesai?'done':''}"><input type="checkbox" data-td="${m.id}|${a.id}|${n.id}" ${n.selesai?'checked':''}><div style="flex:1"><div class="tx">${nl2br(n.teks)}</div>
+    <div class="meta">${n.pic?'👤 '+esc(n.pic)+' · ':''}${n.tarikhAkhir?`<span class="${late?'late':''}">⏰ ${fmtTarikh(n.tarikhAkhir,false)}${late?' (lewat)':''}</span>`:'Tiada tarikh akhir'}</div>
+    <div class="meta">📋 <a href="#" data-act="open" data-id="${m.id}">${esc(m.tajuk||'(Tiada tajuk)')}</a> · ${fmtTarikh(m.tarikh,false)}</div></div></div>`;
+  }
+  return h;
+}
+
+function vRv(){
+  if(U.rvOpen!==null&&U.rv[U.rvOpen])return rvDetail();
+  let h=`<div class="card"><h3>Laporan dalam Google Sheet</h3><p class="hint">Laporan yang dihantar oleh anda dan staf. Tekan untuk baca, beri ulasan semakan, atau salin ke rekod anda untuk dilaporkan ke atas.</p>
+  <div class="bar"><button class="btn" data-act="rvload">⟳ Muat semula</button></div></div>`;
+  if(!S.sync.url)return h+`<div class="empty">Sambungan Google Sheet belum ditetapkan.<br><a href="#" data-act="nav" data-v="tetapan">Pergi ke Tetapan</a></div>`;
+  if(U.rv.length)h+=`<input placeholder="Tapis: nama wakil / tajuk…" data-u="rvQ" value="${esc(U.rvQ)}" style="margin-bottom:12px">`;
+  const q=U.rvQ.toLowerCase();
+  U.rv.forEach((r,i)=>{
+    if(q&&!(String(r.wakil)+' '+r.tajuk).toLowerCase().includes(q))return;
+    const st=String(r.status).startsWith('Disemak')?'Disemak':'Dihantar';
+    h+=`<div class="card mcard" data-act="rvopen" data-i="${i}"><div class="t">${esc(r.tajuk)} <span class="badge ${st}">${esc(r.status)}</span></div>
+    <div class="meta">👤 ${esc(r.wakil)} · 📅 ${fmtTarikh(r.tarikh,false)}</div><div class="meta">Dihantar: ${esc(r.masa)}</div></div>`;
+  });
+  if(!U.rv.length)h+=`<div class="empty">Tekan <b>⟳ Muat semula</b> untuk memuatkan laporan.</div>`;
+  return h;
+}
+function rvDetail(){
+  const r=U.rv[U.rvOpen];
+  return `<div class="bar" style="margin-bottom:10px"><button class="btn sec sm" data-act="rvback">← Senarai</button><span class="badge">${esc(r.status)}</span></div>
+  <div class="card"><div class="meta">Wakil: <b>${esc(r.wakil)}</b> · Dihantar: ${esc(r.masa)}${r.penyemak?` · Disemak oleh ${esc(r.penyemak)}`:''}</div>
+  <label>Ulasan semakan</label><textarea id="rvUl">${esc(r.ulasan||'')}</textarea>
+  <div class="bar" style="margin-top:10px"><button class="btn" data-act="rvreview">✓ Tandakan Disemak</button><button class="btn navy" data-act="rvcopy">📄 Salin ke Mesyuarat Saya</button>
+  <button class="btn out" data-act="word" data-src="rv">⬇️ Word</button><button class="btn out" data-act="print" data-src="rv">🖨️ Cetak</button></div>
+  <p class="hint">"Salin ke Mesyuarat Saya" membolehkan anda menyunting dan melaporkan semula kepada pegawai atasan atas nama anda.</p></div>
+  <div class="paper">${buildReport(r.data,true)}</div>`;
+}
+
+function vSet(){
+  let h=`<div class="card"><h3>Profil saya</h3><p class="hint">Diisi automatik sebagai penandatangan bagi setiap mesyuarat baharu.</p>
+  <label>Nama penuh</label><input data-p="nama" value="${esc(S.profile.nama)}" placeholder="cth: Dr. Muhamad Fadhil bin Mohamad Marzuki">
+  <label>Blok tandatangan (baris selepas nama)</label><textarea data-p="sign" placeholder="No. MMC : 47647, No. NSR: 138188&#10;Ketua Penolong Pengarah Kanan (NCD)&#10;Jabatan Kesihatan Negeri Kedah">${esc(S.profile.sign)}</textarea></div>`;
+  h+=`<div class="card"><h3>Penerima laporan</h3><p class="hint">Pegawai yang menerima laporan. Staf boleh tambah nama ketua masing-masing.</p>`;
+  S.recipients.forEach((r,i)=>{
+    h+=`<div class="note"><div class="row"><div><label>Nama</label><input data-rc="${i}:nama" value="${esc(r.nama)}"></div><div><label>Jawatan</label><input data-rc="${i}:jawatan" value="${esc(r.jawatan)}"></div>
+    <div><label>Jabatan</label><input data-rc="${i}:jabatan" value="${esc(r.jabatan)}"></div><div><label>Kata panggilan</label><input data-rc="${i}:salam" value="${esc(r.salam)}" placeholder="YBrs. Dr.,"></div></div>
+    <div class="bar" style="margin-top:8px;justify-content:flex-end"><button class="btn red sm" data-act="rcdel" data-i="${i}">Padam</button></div></div>`;
+  });
+  h+=`<button class="btn out sm" data-act="rcadd">＋ Tambah penerima</button></div>`;
+  h+=`<div class="card"><h3>Sambungan Google Sheet</h3><p class="hint">Untuk staf menghantar laporan kepada anda. Dapatkan URL dan kunci akses daripada pentadbir (lihat PANDUAN).</p>
+  <label>URL Web App (berakhir dengan /exec)</label><input data-s="url" value="${esc(S.sync.url)}" placeholder="https://script.google.com/macros/s/…/exec">
+  <label>Kunci akses</label><input data-s="key" value="${esc(S.sync.key)}">
+  <div class="bar" style="margin-top:10px"><button class="btn sm" data-act="test">Uji sambungan</button></div></div>`;
+  h+=`<div class="card"><h3>Sandaran</h3><p class="hint">Rekod disimpan dalam pelayar peranti ini sahaja. Eksport sandaran secara berkala, atau untuk pindah ke peranti lain.</p>
+  <div class="bar"><button class="btn out sm" data-act="exp">⬇️ Eksport (JSON)</button><button class="btn out sm" data-act="imp">⬆️ Import</button><input type="file" id="impF" accept=".json,application/json" hidden></div></div>
+  <p class="hint" style="text-align:center">Laporan Wakil Mesyuarat v1.1 · Unit NCD JKN Kedah</p>`;
+  return h;
+}
+
+/* ---------- tindakan ---------- */
+function addNote(ai){
+  const m=cur(),a=m.agenda[ai],ta=document.getElementById('cmp-'+a.id);
+  const t=(ta?.value||'').trim();
+  if(!t){toast('Tulis nota dahulu');ta?.focus();return}
+  a.nota.push({id:uid(),jenis:U.comp[a.id]||'makluman',teks:t,pic:'',tarikhAkhir:'',selesai:false});
+  U.draft[a.id]='';touch();rr();
+  document.getElementById('cmp-'+a.id)?.focus();
+}
+function exportAll(){
+  dl(new Blob([JSON.stringify({app:'laporan-wakil-mesyuarat',ver:1,at:new Date().toISOString(),profile:S.profile,recipients:S.recipients,meetings:S.meetings},null,1)],{type:'application/json'}),`sandaran_laporan_mesyuarat_${today()}.json`);
+}
+function importFile(f){
+  if(!f)return;const rd=new FileReader();
+  rd.onload=()=>{try{const d=JSON.parse(rd.result);const ms=(d.meetings||[]).map(normalize);let n=0;
+    ms.forEach(m=>{const i=S.meetings.findIndex(x=>x.id===m.id);if(i>=0)S.meetings[i]=m;else S.meetings.push(m);n++});
+    if(d.recipients&&confirm('Gantikan senarai penerima dengan yang dalam fail sandaran?'))S.recipients=d.recipients;
+    if(d.profile&&!S.profile.nama)S.profile=d.profile;
+    save();rr();toast(n+' rekod mesyuarat diimport ✓')}catch(e){toast('Fail tidak sah')}};
+  rd.readAsText(f);
+}
+
+function onInput(e){
+  const t=e.target,d=t.dataset;
+  if(t.id==='impF'){if(e.type==='change')importFile(t.files[0]);return}
+  const v=t.type==='checkbox'?t.checked:t.value;
+  if(t.tagName==='TEXTAREA')autosize(t);
+  if(d.m!==undefined){cur()[d.m]=v;touch();return}
+  if(d.note){const[a,n,f]=d.note.split(':');cur().agenda[a].nota[n][f]=v;touch();if(f==='jenis'&&e.type==='change')rr();return}
+  if(d.ag!==undefined){cur().agenda[d.ag].tajuk=v;touch();return}
+  if(d.cmp){U.draft[d.cmp]=v;return}
+  if(d.p){S.profile[d.p]=v;saveSoon();return}
+  if(d.rc){const[i,f]=d.rc.split(':');S.recipients[i][f]=v;saveSoon();return}
+  if(d.s){S.sync[d.s]=v.trim();saveSoon();return}
+  if(d.td&&e.type==='change'){const[mi,ai,ni]=d.td.split('|');const m=S.meetings.find(x=>x.id===mi);const n=m?.agenda.find(x=>x.id===ai)?.nota.find(x=>x.id===ni);if(n){n.selesai=v;m.updated=Date.now();save();rr()}return}
+  if(d.u&&e.type==='input'){U[d.u]=v;rr();const el=app.querySelector(`[data-u="${d.u}"]`);if(el){el.focus();el.setSelectionRange(v.length,v.length)}}
+}
+app.addEventListener('input',onInput);
+app.addEventListener('change',onInput);
+app.addEventListener('keydown',e=>{
+  if(e.target.dataset.cmp&&e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();const m=cur();addNote(m.agenda.findIndex(a=>a.id===e.target.dataset.cmp))}
+});
+
+document.addEventListener('click',e=>{
+  const nb=e.target.closest('[data-nav]');if(nb){go(nb.dataset.nav);return}
+  const sp=e.target.closest('[data-sp]');if(sp){$('#aud').playbackRate=+sp.dataset.sp;document.querySelectorAll('.sp').forEach(x=>x.classList.toggle('on',x===sp));return}
+  const mic=e.target.closest('[data-mic]');if(mic){toggleMic(mic,mic.dataset.mic);return}
+  const b=e.target.closest('[data-act]');if(!b)return;
+  e.preventDefault();
+  const d=b.dataset,m=cur();
+  const tgt=()=>d.src==='rv'?U.rv[U.rvOpen].data:m;
+  switch(d.act){
+    case'nav':go(d.v);break;
+    case'new':{const n=newM();S.meetings.push(n);save();U.cur=n.id;U.sub='info';go('edit');break}
+    case'open':{U.cur=d.id;const x=cur();U.sub=x&&x.agenda.length?'nota':'info';go('edit');break}
+    case'sub':U.sub=d.v;render();scrollTo(0,0);break;
+    case'delm':if(isRec(m)){toast('Hentikan rakaman dahulu');break}if(confirm('Padam rekod mesyuarat ini (termasuk rakaman audio)? Tindakan ini tidak boleh dibatalkan.')){idbDel(m.id).catch(()=>{});revokeAudio(m.id);S.meetings=S.meetings.filter(x=>x.id!==m.id);save();go('list')}break;
+    case'agadd':{const ls=$('#agPaste').value.split('\n').map(l=>l.replace(/^\s*(\d+(\.\d+)*[.)]?|[a-z][.)]|[-•*–])\s+/i,'').trim()).filter(Boolean);
+      if(!ls.length){toast('Tiada item agenda');break}
+      ls.forEach(t=>m.agenda.push({id:uid(),tajuk:t,nota:[]}));touch();rr();toast(ls.length+' item agenda ditambah');break}
+    case'agdel':{const a=m.agenda[d.a];if(a.nota.length&&!confirm('Padam agenda ini berserta semua notanya?'))break;m.agenda.splice(d.a,1);touch();rr();break}
+    case'ctype':U.comp[d.aid]=d.v;rr();document.getElementById('cmp-'+d.aid)?.focus();break;
+    case'nadd':addNote(+d.a);break;
+    case'ndel':if(confirm('Padam nota ini?')){m.agenda[d.a].nota.splice(d.n,1);touch();rr()}break;
+    case'suggest':{const s=m.agenda.flatMap(a=>a.nota.filter(n=>(n.jenis==='perhatian'||n.jenis==='keputusan')&&n.teks.trim()).map(n=>n.teks.trim().replace(/\s*\n\s*/g,' ')));
+      if(!s.length){toast('Tiada nota bertanda Keputusan / Perhatian Boss');break}
+      if(m.ringkasan.trim()&&!confirm('Tambah di bawah ringkasan sedia ada?'))break;
+      m.ringkasan=(m.ringkasan.trim()?m.ringkasan.trim()+'\n':'')+s.join('\n');touch();rr();toast('Disenaraikan. Sunting supaya ringkas.');break}
+    case'word':dlWord(tgt(),d.src==='rv');break;
+    case'print':doPrint(tgt(),d.src==='rv');break;
+    case'wa':copyText(waText(tgt()));break;
+    case'send':sendSheet(m);break;
+    case'siap':m.status=m.status==='Draf'?'Siap':'Draf';touch();rr();break;
+    case'tdf':U.tdAll=d.v==='1';rr();break;
+    case'rcadd':S.recipients.push({id:uid(),nama:'',jawatan:'',jabatan:JABATAN,salam:'YBrs. Dr.,'});save();rr();break;
+    case'rcdel':if(confirm('Padam penerima ini?')){S.recipients.splice(d.i,1);save();rr()}break;
+    case'test':testSync();break;
+    case'exp':exportAll();break;
+    case'imp':$('#impF').click();break;
+    case'rvload':rvLoad();break;
+    case'rvopen':U.rvOpen=+d.i;render();scrollTo(0,0);break;
+    case'rvback':U.rvOpen=null;render();break;
+    case'rvreview':rvReview();break;
+    case'rvcopy':rvCopy();break;
+    case'rmula':recStart();break;
+    case'rjeda':recPause();break;
+    case'rhenti':recStop();break;
+    case'rnext':recNext(m);break;
+    case'rmark':recMark(m,d.aid);break;
+    case'rplay':playSeg(m,d.aid);break;
+    case'rdl':recDl(m);break;
+    case'rmk':copyText(marksText(m));break;
+    case'rdel':recDel(m);break;
+    case'rgo':if(RS){U.cur=RS.mid;U.sub='nota';go('edit')}break;
+  }
+});
+
+load();render();
+if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
